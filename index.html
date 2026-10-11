@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0718" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>ChillBlazer: Calm the Storm</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <script type="module" crossorigin src="./assets/index-CKVBcxMT.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CPBVVF07.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <div id="hud" class="hidden">
+    <div id="hud-left">
+      <div id="hud-portrait"></div>
+      <div class="bars">
+        <div class="bar-label">CHILL</div>
+        <div class="bar chill"><div id="chill-fill" class="fill"></div></div>
+        <div class="bar-label panic-label">PANIC</div>
+        <div class="bar panic"><div id="panic-fill" class="fill"></div></div>
+      </div>
+    </div>
+    <div id="hud-center">
+      <div id="compass"><div id="compass-strip"></div><div id="compass-needle"></div></div>
+      <div id="objective">Calm the storm.</div>
+    </div>
+    <div id="hud-right">
+      <canvas id="minimap" width="220" height="220"></canvas>
+      <button id="btn-pause" class="icon-btn" aria-label="Pause">II</button>
+    </div>
+    <div id="bossbar" class="hidden">
+      <div id="boss-portrait"></div>
+      <div id="boss-name">BOSS</div>
+      <div class="bar boss"><div id="boss-fill" class="fill"></div></div>
+      <div id="boss-sub">STRESS</div>
+    </div>
+    <div id="lock-reticle" class="hidden"></div>
+    <div id="boss-intro"><div class="bi-img"></div><div><div class="bi-name"></div><div class="bi-line"></div></div></div>
+    <div id="popups"></div>
+    <div id="flash"></div>
+    <div id="toast"></div>
+
+    <div id="joy-zone"><div id="joy-base"><div id="joy-knob"></div></div></div>
+    <div id="buttons">
+      <button class="act" id="b-strike" data-act="strike"><span>CALM STRIKE</span></button>
+      <button class="act" id="b-blast" data-act="blast"><span>CHILL BLAST</span></button>
+      <button class="act" id="b-jump" data-act="jump"><span>JUMP</span></button>
+      <button class="act hold" id="b-field" data-act="field"><span>CALM FIELD</span></button>
+      <button class="act hold" id="b-five" data-act="five"><span>TAKE FIVE</span></button>
+      <button class="act small" id="b-lock" data-act="lock"><span>LOCK</span></button>
+    </div>
+  </div>
+
+  <div id="screen-title" class="screen">
+    <div class="title-art"></div>
+    <div class="title-panel">
+      <div class="logo" role="img" aria-label="ChillBlazer: Calm the Storm">ChillBlazer</div>
+      <div class="tagline">CALM THE STORM</div>
+      <p class="blurb">The Amp is selling panic from the Amp Tower. Its OVERDRIVE signal keeps the city frantic. Powered by the Sentinel Strain, you don't hit harder. You bring the calm.</p>
+      <div class="menu">
+        <button id="btn-continue" class="menu-btn hidden">CONTINUE</button>
+        <button id="btn-new" class="menu-btn">NEW GAME</button>
+        <button id="btn-settings" class="menu-btn ghost">SETTINGS</button>
+        <button id="btn-install" class="menu-btn ghost hidden">INSTALL APP</button>
+      </div>
+      <div id="save-info" class="save-info"></div>
+      <div class="hint">Best in landscape. Tap Install / Add to Home screen to play offline.</div>
+    </div>
+  </div>
+
+  <div id="screen-pause" class="screen hidden dim">
+    <div class="panel">
+      <h2>PAUSED</h2>
+      <button id="btn-resume" class="menu-btn">RESUME</button>
+      <button id="btn-settings2" class="menu-btn ghost">SETTINGS</button>
+      <button id="btn-quit" class="menu-btn ghost">SAVE &amp; QUIT TO TITLE</button>
+      <div class="controls-help">
+        <b>Touch:</b> left stick move, drag right side to look. Hold CALM FIELD / TAKE FIVE.<br>
+        <b>Keys:</b> WASD move, mouse drag / arrows look, Space jump, J or click = Strike, K or right-click = Blast, hold Q = Field, hold R = Take Five, F/Tab = Lock-on, Esc = Pause.
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-settings" class="screen hidden dim">
+    <div class="panel">
+      <h2>SETTINGS</h2>
+      <label>Quality
+        <select id="set-quality"><option value="low">Low (fastest)</option><option value="medium">Medium</option><option value="high">High</option></select>
+      </label>
+      <label>Look sensitivity <input id="set-sens" type="range" min="0.3" max="2.5" step="0.1" /></label>
+      <label>Volume <input id="set-vol" type="range" min="0" max="1" step="0.05" /></label>
+      <label class="row"><input id="set-invert" type="checkbox" /> Invert look Y</label>
+      <label class="row"><input id="set-fps" type="checkbox" /> Show FPS</label>
+      <button id="btn-settings-done" class="menu-btn">DONE</button>
+      <button id="btn-reset" class="menu-btn ghost danger">RESET SAVE</button>
+    </div>
+  </div>
+
+  <div id="screen-end" class="screen hidden dim">
+    <div class="panel end">
+      <div id="end-art"></div>
+      <h2 id="end-title">CITY CALMED</h2>
+      <p id="end-text"></p>
+      <button id="btn-end-primary" class="menu-btn">PLAY AGAIN</button>
+      <button id="btn-end-title" class="menu-btn ghost">TITLE</button>
+    </div>
+  </div>
+
+  <div id="fps" class="hidden">-- fps</div>
+  <div id="rotate-hint">Rotate your phone to landscape</div>
+</body>
+</html>
