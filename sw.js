@@ -1,6 +1,6 @@
 // generated at build time
-const CACHE = 'chillblazer-brawler-e42366e57a';
-const PRECACHE = ["./","./assets/amp-enforcer-portrait-160-BKeciZtK.jpg","./assets/amp-portrait-160-CA6N4QRy.jpg","./assets/calm-field-BvnmzyPR.png","./assets/calm-strike-DaqE85_k.png","./assets/chill-blast-C4oYLnSI.png","./assets/hero-face-BNunNYdQ.png","./assets/holo-atlas-Cd4475eH.webp","./assets/index-DL9cOwaU.js","./assets/index-iU48wo_-.css","./assets/jump-CH-GmXY1.png","./assets/lock-on-lWSpzaNS.png","./assets/logo-800-CfWehud7.png","./assets/lose-VxtNXVRd.jpg","./assets/portrait-71rFsCbQ.jpg","./assets/signs-atlas-OiKJRqLS.webp","./assets/title-key-BLJG8Hq4.jpg","./assets/win-qJhfotmv.jpg","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-512.png","./manifest.webmanifest"];
+const CACHE = 'chillblazer-brawler-3bf84ae3c5';
+const PRECACHE = ["./","./assets/amp-enforcer-portrait-160-BKeciZtK.jpg","./assets/amp-portrait-160-CA6N4QRy.jpg","./assets/calm-field-BvnmzyPR.png","./assets/calm-strike-DaqE85_k.png","./assets/chill-blast-C4oYLnSI.png","./assets/hero-face-BNunNYdQ.png","./assets/holo-atlas-Cd4475eH.webp","./assets/index-5pVB3UsF.js","./assets/index-gz8EPGJg.css","./assets/jump-CH-GmXY1.png","./assets/lock-on-lWSpzaNS.png","./assets/logo-800-CfWehud7.png","./assets/lose-VxtNXVRd.jpg","./assets/portrait-71rFsCbQ.jpg","./assets/signs-atlas-OiKJRqLS.webp","./assets/title-key-BLJG8Hq4.jpg","./assets/win-qJhfotmv.jpg","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/icon-maskable-512.png","./manifest.webmanifest"];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));
 });
