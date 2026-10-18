@@ -11,8 +11,8 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <script type="module" crossorigin src="./assets/index-BpmEt1w0.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-h6_Js3Ca.css">
+  <script type="module" crossorigin src="./assets/index-G_hRhPFf.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-D5okVTQw.css">
 </head>
 <body>
   <canvas id="game"></canvas>
@@ -30,6 +30,7 @@
     <div id="hud-center">
       <div id="compass"><div id="compass-strip"></div><div id="compass-needle"></div></div>
       <div id="objective">Calm the storm.</div>
+      <div id="obj-meter" class="hidden"><div class="om-label"></div><div class="om-bar"><div class="om-fill"></div></div><div class="om-val"></div></div>
     </div>
     <div id="hud-right">
       <canvas id="minimap" width="220" height="220"></canvas>
@@ -48,7 +49,12 @@
     <div id="toast"></div>
     <div id="hit-vig"></div>
     <div id="hit-ind"><div class="hi-ring"><div class="hi-arrow"></div></div><div class="hi-label"></div></div>
-    <div id="level-banner"><div class="lb-top"></div><div class="lb-name"></div></div>
+    <div id="level-banner"><div class="lb-art"></div><div class="lb-text"><div class="lb-top"></div><div class="lb-name"></div><div class="lb-intro"></div></div></div>
+    <div id="halftone"></div>
+    <div id="say" class="hidden"><div class="say-face"></div><div class="say-body"><div class="say-name"></div><div class="say-text"></div></div></div>
+    <div id="unit-card"><div class="uc-tag">NEW AMP UNIT!</div><div class="uc-img"></div><div class="uc-name"></div><div class="uc-tip"></div></div>
+    <div id="streak"><div class="st-label"></div><div class="st-strain"></div><div class="st-line"></div></div>
+    <div id="tut" class="hidden"><div class="tut-step"></div><div class="tut-title"></div><div class="tut-text"></div><button id="tut-skip" class="tut-skip">SKIP TUTORIAL</button></div>
 
     <div id="joy-zone"><div id="joy-base"><div id="joy-knob"></div></div></div>
     <div id="buttons">
@@ -73,6 +79,7 @@
         <button id="btn-install" class="menu-btn ghost hidden">INSTALL APP</button>
       </div>
       <div id="save-info" class="save-info"></div>
+      <div id="title-tip" class="title-tip"></div>
       <div class="hint">Best in landscape. Tap Install / Add to Home screen to play offline.</div>
     </div>
   </div>
@@ -84,9 +91,10 @@
       <button id="btn-settings2" class="menu-btn ghost">SETTINGS</button>
       <button id="btn-quit" class="menu-btn ghost">SAVE &amp; QUIT TO TITLE</button>
       <div class="controls-help">
-        <b>Touch:</b> left stick move, drag right side to look. Hold CALM FIELD / TAKE FIVE.<br>
+        <b>Touch:</b> left stick move, drag right side to look. Hold CALM FIELD to calm everyone around you. Step out of a fight to start Taking Five (Panic drains).<br>
         <b>Keys:</b> WASD move, mouse drag / arrows look, Space jump, J or click = Strike, K or right-click = Blast, hold Q = Field, F/Tab = Lock-on, Esc = Pause.
       </div>
+      <div class="pause-tip-wrap"><b>CALM CODEX:</b> <span id="pause-tip"></span></div>
     </div>
   </div>
 
@@ -103,6 +111,7 @@
       <label class="row"><input id="set-invert" type="checkbox" /> Invert look Y</label>
       <label class="row"><input id="set-fps" type="checkbox" /> Show FPS</label>
       <button id="btn-settings-done" class="menu-btn">DONE</button>
+      <button id="btn-tutorial" class="menu-btn ghost">REPLAY TUTORIAL</button>
       <button id="btn-reset" class="menu-btn ghost danger">RESET SAVE</button>
     </div>
   </div>

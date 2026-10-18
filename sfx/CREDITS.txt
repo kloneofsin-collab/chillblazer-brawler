@@ -1,0 +1,2 @@
+ChillBlazer SFX pack subset - original procedural synthesis, CC0 1.0 (public domain).
+Source: chillblazer-platformer/sfx-incoming (see INDEX.md there). Re-encoded mono 56 kbps MP3; enemy_cage_slam and boss_amp_truck_horn trimmed.
