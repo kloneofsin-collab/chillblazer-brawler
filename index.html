@@ -11,8 +11,8 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <script type="module" crossorigin src="./assets/index-3JI8wbgw.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-D5okVTQw.css">
+  <script type="module" crossorigin src="./assets/index-DKTJR4kY.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DcOnhN8c.css">
 </head>
 <body>
   <canvas id="game"></canvas>
@@ -84,10 +84,17 @@
     </div>
   </div>
 
+  <div id="story" class="hidden" aria-live="polite">
+    <div class="st-frame"><div class="st-art"></div><div class="st-text"></div><div class="st-spin">LOADING...</div></div>
+    <div class="st-bar"><div class="st-dots"></div><div class="st-hint">TAP TO CONTINUE</div><button class="st-skip" type="button">SKIP &#9656;&#9656;</button></div>
+    <div class="st-gallery"><h2>STORY</h2><div class="st-list"></div><button class="st-close menu-btn" type="button">BACK</button></div>
+  </div>
+
   <div id="screen-pause" class="screen hidden dim">
     <div class="panel">
       <h2>PAUSED</h2>
       <button id="btn-resume" class="menu-btn">RESUME</button>
+      <button id="btn-story" class="menu-btn ghost">STORY</button>
       <button id="btn-settings2" class="menu-btn ghost">SETTINGS</button>
       <button id="btn-quit" class="menu-btn ghost">SAVE &amp; QUIT TO TITLE</button>
       <div class="controls-help">
