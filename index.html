@@ -11,8 +11,8 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <script type="module" crossorigin src="./assets/index-DtxfdKPz.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-hfoKG9E-.css">
+  <script type="module" crossorigin src="./assets/index--KpQ0vsb.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DfBS43cd.css">
 </head>
 <body>
   <canvas id="game"></canvas>
@@ -75,8 +75,11 @@
       <p class="blurb">The Amp is selling panic from the Amp Tower. Its OVERDRIVE signal keeps the city frantic. Powered by the Sentinel Strain, you don't hit harder. You bring the calm.</p>
       <div class="menu">
         <button id="btn-continue" class="menu-btn hidden">CONTINUE</button>
+        <div id="hero-pick" class="hero-pick" role="radiogroup" aria-label="Hero"></div>
         <button id="btn-new" class="menu-btn">NEW GAME</button>
         <div id="diff-pick" class="diff-pick" role="radiogroup" aria-label="Difficulty"><button type="button" data-mode="easy">EASY</button><button type="button" data-mode="normal">NORMAL</button><button type="button" data-mode="hard">HARD</button></div>
+        <button id="btn-daily" class="menu-btn ghost">DAILY CHALLENGE</button>
+        <button id="btn-records" class="menu-btn ghost">RECORDS</button>
         <button id="btn-settings" class="menu-btn ghost">SETTINGS</button>
         <button id="btn-install" class="menu-btn ghost hidden">INSTALL APP</button>
       </div>
@@ -123,9 +126,29 @@
       <label class="row"><input id="set-mute" type="checkbox" /> Mute all audio</label>
       <label class="row"><input id="set-invert" type="checkbox" /> Invert look Y</label>
       <label class="row"><input id="set-fps" type="checkbox" /> Show FPS</label>
+      <label class="row"><input id="set-vibrate" type="checkbox" /> Vibration (hits, combo finishers, boss hits)</label>
       <button id="btn-settings-done" class="menu-btn">DONE</button>
       <button id="btn-tutorial" class="menu-btn ghost">REPLAY TUTORIAL</button>
       <button id="btn-reset" class="menu-btn ghost danger">RESET SAVE</button>
+    </div>
+  </div>
+
+  <div id="screen-records" class="screen hidden dim">
+    <div class="panel rec-panel">
+      <h2>RECORDS</h2>
+      <table class="rec-table"><thead><tr><th>MODE</th><th>BEST TIME</th><th>BEST SCORE</th></tr></thead><tbody id="rec-body"></tbody></table>
+      <div class="rec-daily"><b>TODAY'S DAILY:</b> <span id="rec-daily-today"></span><br><b>DAILY RECORD:</b> <span id="rec-daily-best"></span></div>
+      <button id="btn-rec-daily" class="menu-btn">PLAY DAILY</button>
+      <button id="btn-rec-back" class="menu-btn ghost">BACK</button>
+    </div>
+  </div>
+
+  <div id="screen-upgrade" class="screen hidden dim">
+    <div class="panel up-panel">
+      <h2>LEVEL CALMED - UPGRADES</h2>
+      <div class="up-pts">CALM POINTS: <b id="up-pts">0</b></div>
+      <div id="up-list" class="up-list"></div>
+      <button id="btn-up-done" class="menu-btn">NEXT LEVEL &#9656;</button>
     </div>
   </div>
 
