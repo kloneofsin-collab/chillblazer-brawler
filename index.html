@@ -11,8 +11,8 @@
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
   <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-  <script type="module" crossorigin src="./assets/index-BBL3JUsr.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-yCB1YukK.css">
+  <script type="module" crossorigin src="./assets/index-DJLADfGt.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DOTdH23i.css">
 </head>
 <body>
   <canvas id="game"></canvas>
@@ -30,6 +30,7 @@
     <div id="hud-center">
       <div id="compass"><div id="compass-strip"></div><div id="compass-needle"></div></div>
       <div id="objective">Calm the storm.</div>
+      <div id="mission-hud"></div>
       <div id="hud-mode" class="mode-badge sm">NORMAL</div>
       <div id="obj-meter" class="hidden"><div class="om-label"></div><div class="om-bar"><div class="om-fill"></div></div><div class="om-val"></div></div>
     </div>
@@ -65,6 +66,10 @@
       <button class="act" id="b-jump" data-act="jump"><span>JUMP</span></button>
       <button class="act hold" id="b-field" data-act="field"><span>CALM FIELD</span></button>
       <button class="act small" id="b-lock" data-act="lock"><span>LOCK</span></button>
+      <!-- R14 flight: text-only buttons until Bob draws the icons -->
+      <button class="act small fly" id="b-fly" data-act="fly"><span>FLY</span></button>
+      <button class="act small fly fly-only" id="b-up" data-act="up"><span>UP</span></button>
+      <button class="act small fly fly-only" id="b-down" data-act="down"><span>DOWN</span></button>
     </div>
   </div>
 
@@ -80,6 +85,7 @@
         <div id="hero-pick" class="hero-pick" role="radiogroup" aria-label="Hero"></div>
         <button id="btn-new" class="menu-btn">NEW GAME</button>
         <div id="diff-pick" class="diff-pick" role="radiogroup" aria-label="Difficulty"><button type="button" data-mode="easy">EASY</button><button type="button" data-mode="normal">NORMAL</button><button type="button" data-mode="hard">HARD</button></div>
+        <div id="night-pick" class="night-pick" aria-label="Nights"></div>
         <button id="btn-daily" class="menu-btn ghost">DAILY CHALLENGE</button>
         <button id="btn-records" class="menu-btn ghost">RECORDS</button>
         <button id="btn-settings" class="menu-btn ghost">SETTINGS</button>
@@ -103,6 +109,8 @@
       <div id="pause-mode" class="mode-badge">NORMAL</div>
       <button id="btn-resume" class="menu-btn">RESUME</button>
       <button id="btn-story" class="menu-btn ghost">STORY</button>
+      <button id="btn-missions" class="menu-btn ghost">MISSIONS</button>
+      <button id="btn-journal" class="menu-btn ghost">JOURNAL</button>
       <button id="btn-settings2" class="menu-btn ghost">SETTINGS</button>
       <button id="btn-quit" class="menu-btn ghost">SAVE &amp; QUIT TO TITLE</button>
       <div class="controls-help">
@@ -111,6 +119,28 @@
       </div>
       <div class="pause-tip-wrap"><b>CALM CODEX:</b> <span id="pause-tip"></span></div>
     </div>
+  </div>
+
+  <div id="screen-missions" class="screen hidden dim">
+    <div class="panel log-panel">
+      <h2>MISSION LOG</h2>
+      <div id="mission-count" class="log-count"></div>
+      <div id="mission-list" class="log-list"></div>
+      <button id="btn-missions-back" class="menu-btn">BACK</button>
+    </div>
+  </div>
+
+  <div id="screen-journal" class="screen hidden dim">
+    <div class="panel log-panel">
+      <h2>LORE JOURNAL</h2>
+      <div id="journal-count" class="log-count"></div>
+      <div id="journal-list" class="log-list"></div>
+      <button id="btn-journal-back" class="menu-btn">BACK</button>
+    </div>
+  </div>
+
+  <div id="lore-card" class="hidden" role="dialog" aria-label="Lore card">
+    <div class="lc-card"><div class="lc-in"><div class="lc-count"></div><h3 class="lc-title"></h3><div class="lc-src"></div><p class="lc-text"></p><div class="lc-reward"></div><div class="lc-hint">TAP TO CONTINUE</div></div></div>
   </div>
 
   <div id="screen-settings" class="screen hidden dim">
@@ -154,6 +184,16 @@
     </div>
   </div>
 
+  <!-- round 13: night transition card (Night 1 complete -> Night 2 begins); comic panel style, text only -->
+  <div id="screen-night" class="screen hidden dim">
+    <div class="panel night-card">
+      <div id="nc-top" class="nc-top">NIGHT 1 COMPLETE</div>
+      <h2 id="nc-title">NIGHT 2 BEGINS</h2>
+      <p id="nc-text"></p>
+      <button id="btn-night-go" class="menu-btn">START NIGHT 2</button>
+      <button id="btn-night-title" class="menu-btn ghost">SAVE AND QUIT TO TITLE</button>
+    </div>
+  </div>
   <div id="screen-end" class="screen hidden dim">
     <div class="panel end">
       <div id="end-art"></div>
